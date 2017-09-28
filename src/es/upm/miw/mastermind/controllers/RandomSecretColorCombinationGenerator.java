@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.upm.miw.mastermind.models.Combination;
-import es.upm.miw.mastermind.utils.Color;
-import es.upm.miw.mastermind.utils.Message;
+import es.upm.miw.mastermind.utils.Color; 
 
-public class RandomColorCombinationGenerator extends ColorCombinationGeneratorController {
+public class RandomSecretColorCombinationGenerator extends ColorCombinationGeneratorController {
 
-    public RandomColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) { 
+    public RandomSecretColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) { 
         super(dimension, ioController, patternPlay); 
     }
 
@@ -19,8 +18,7 @@ public class RandomColorCombinationGenerator extends ColorCombinationGeneratorCo
         for(int i=0;i<this.dimension;i++) {
              colors.add(Color.getRandom());
         }
-        Combination combination = new Combination(dimension, colors);
-        ioController.writeln(String.format(Message.READ_PLAY.toString(), dimension) + combination.toString());
+        Combination combination = new Combination(dimension, colors); 
         return combination;
     }  
 }

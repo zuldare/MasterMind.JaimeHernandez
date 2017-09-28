@@ -10,6 +10,7 @@ import es.upm.miw.mastermind.controllers.ContinueController;
 import es.upm.miw.mastermind.controllers.PlayerController;
 import es.upm.miw.mastermind.controllers.ManualPlayerController;
 import es.upm.miw.mastermind.controllers.RandomColorCombinationGenerator;
+import es.upm.miw.mastermind.controllers.RandomSecretColorCombinationGenerator;
 import es.upm.miw.mastermind.utils.Message;
 import es.upm.miw.mastermind.utils.State;
 
@@ -41,7 +42,7 @@ public class Game {
         this.ioController = ioController;
         this.state = State.INITIAL;  
         this.players = new  PlayerController [numberOfPlayers];
-        this.board = new Board(this.ioController, new RandomColorCombinationGenerator(this.dimension, this.ioController, PATTERN_PLAY)); 
+        this.board = new Board(this.ioController, new RandomSecretColorCombinationGenerator(this.dimension, this.ioController, PATTERN_PLAY)); 
     } 
   
     public void launch() {
@@ -71,7 +72,7 @@ public class Game {
         boolean victory = false;
         Combination playerCombination = null; 
         do {
-            playerCombination = players[1].generateCombination();
+            playerCombination = players[1].generateCombination(); 
             victory = board.matchesWithSecretCombination(playerCombination);
             if (!victory){
                 numberOfRounds++;
