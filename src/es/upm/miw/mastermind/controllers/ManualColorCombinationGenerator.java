@@ -11,7 +11,7 @@ public class ManualColorCombinationGenerator extends ColorCombinationGeneratorCo
 
     public ManualColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) { 
         super(dimension, ioController, patternPlay); 
-    }
+    } 
 
     @Override
     public Combination generateCombination() {         
@@ -21,7 +21,7 @@ public class ManualColorCombinationGenerator extends ColorCombinationGeneratorCo
             combination = ioController.readString(String.format(Message.READ_PLAY.toString(), this.dimension)).toUpperCase(); 
             ok = isOkPlayerPlayCombination(combination);
         } while (!ok);
-        return new Combination(dimension, getListOfColors(combination));
+        return new Combination( this.dimension, getListOfColors(combination));
     }
     
     
