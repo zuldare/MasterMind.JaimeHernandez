@@ -2,7 +2,7 @@ package es.upm.miw.mastermind.controllers;
 
 import es.upm.miw.mastermind.views.IOView;
 
-public abstract class IOController {
+public abstract class IOController implements IOView {
 
     protected IOView ioView;
 

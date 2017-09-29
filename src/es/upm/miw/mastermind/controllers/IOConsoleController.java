@@ -1,15 +1,16 @@
 package es.upm.miw.mastermind.controllers;
 
-import es.upm.miw.mastermind.utils.IO; 
+import es.upm.miw.mastermind.utils.IO;
+import es.upm.miw.mastermind.views.IOView;
 
-public class IOConsoleController extends IOController { 
-    
-    public IOConsoleController(){
+public class IOConsoleController extends IOController implements IOView {
+
+    public IOConsoleController() {
         super(new IO());
     }
 
     @Override
-    public String readString(String title) { 
+    public String readString(String title) {
         return ioView.readString(title);
     }
 

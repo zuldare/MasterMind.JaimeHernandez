@@ -9,18 +9,18 @@ import es.upm.miw.mastermind.utils.Message;
 
 public class RandomColorCombinationGenerator extends ColorCombinationGeneratorController {
 
-    public RandomColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) { 
-        super(dimension, ioController, patternPlay); 
+    public RandomColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) {
+        super(dimension, ioController, patternPlay);
     }
 
     @Override
-    public Combination generateCombination() {  
+    public Combination generateCombination() {
         List<Color> colors = new ArrayList<Color>();
-        for(int i=0;i<this.dimension;i++) {
-             colors.add(Color.getRandom());
+        for (int i = 0; i < this.dimension; i++) {
+            colors.add(Color.getRandom());
         }
         Combination combination = new Combination(dimension, colors);
         ioController.writeln(String.format(Message.READ_PLAY.toString(), dimension) + combination.toString());
         return combination;
-    }  
+    }
 }

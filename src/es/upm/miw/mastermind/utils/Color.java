@@ -1,7 +1,6 @@
 package es.upm.miw.mastermind.utils;
 
-public enum Color {
-
+public enum Color { 
     YELLOW("A"), 
     RED("R"), 
     GRREN("V"), 
@@ -12,7 +11,7 @@ public enum Color {
     private String value;
 
     private Color(String value) {
-        this.value = value; 
+        this.value = value;
     }
 
     public String toString() {
@@ -22,13 +21,13 @@ public enum Color {
     public static Color getRandom() {
         return values()[(int) (Math.random() * values().length)];
     }
-    
-    public static Color getByStringCode(String code) { 
-        for(Color c : Color.values()){
-            if(code.equals(c.value)) {
+
+    public static Color getByStringCode(String code) {
+        for (Color c : Color.values()) {
+            if (code.equals(c.value)) {
                 return Color.valueOf(c.name());
             }
         }
         return null;
-    } 
+    }
 }

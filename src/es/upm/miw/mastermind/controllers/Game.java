@@ -25,15 +25,13 @@ public class Game {
 
     private static final int DEFAULT_PLAY_MODE = 1;
 
-    
-
     public Game(int dimension, IOController ioController, String pattern) {
         assert dimension > 0;
         assert ioController != null;
         assert pattern != null;
-        
+
         this.dimension = dimension;
-        this.ioController = ioController; 
+        this.ioController = ioController;
         this.patternPlay = String.format(pattern, dimension);
         this.boardController = new BoardController(dimension, this.ioController, pattern);
         this.players = new PlayerController[NUMBER_OF_PLAYERS];
@@ -79,8 +77,8 @@ public class Game {
         return option;
     }
 
-   private void setPlayers(int playMode) {
-        players[0] = new ComputerPlayerController(this.dimension, this.ioController, this.patternPlay); 
+    private void setPlayers(int playMode) {
+        players[0] = new ComputerPlayerController(this.dimension, this.ioController, this.patternPlay);
         if (playMode == 1) {
             players[1] = new ManualPlayerController(this.dimension, this.ioController, this.patternPlay);
         } else {
@@ -125,11 +123,12 @@ public class Game {
     private void writePlainComputerPlayerSecretCombination() {
         ioController.writeln(String.format(Message.SECRET_WAS.toString(), boardController.getPlainSecretBoardCombination()));
     }
-    
-    private void writeVictory(){
+
+    private void writeVictory() {
         ioController.writeln(String.format(Message.VICTORY.toString(), this.dimension));
-        
+
     }
+
     private void writeNoMoreRoundsMessage() {
         ioController.writeln(Message.CONTINUE.toString());
     }

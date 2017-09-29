@@ -23,5 +23,5 @@ public enum Message {
 
     public String toString() {
         return value;
-    } 
+    }
 }
