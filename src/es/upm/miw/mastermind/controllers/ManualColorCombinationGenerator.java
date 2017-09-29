@@ -9,30 +9,29 @@ import es.upm.miw.mastermind.utils.Message;
 
 public class ManualColorCombinationGenerator extends ColorCombinationGeneratorController {
 
-    public ManualColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) { 
-        super(dimension, ioController, patternPlay); 
-    } 
+    public ManualColorCombinationGenerator(int dimension, IOController ioController, String patternPlay) {
+        super(dimension, ioController, patternPlay);
+    }
 
     @Override
-    public Combination generateCombination() {         
+    public Combination generateCombination() {
         String combination = "";
         boolean ok = false;
         do {
-            combination = ioController.readString(String.format(Message.READ_PLAY.toString(), this.dimension)).toUpperCase(); 
+            combination = ioController.readString(String.format(Message.READ_PLAY.toString(), this.dimension)).toUpperCase();
             ok = isOkPlayerPlayCombination(combination);
         } while (!ok);
-        return new Combination( this.dimension, getListOfColors(combination));
+        return new Combination(this.dimension, getListOfColors(combination));
     }
-    
-    
+
     private List<Color> getListOfColors(String combination) {
         List<Color> colors = new ArrayList<Color>();
         colors.clear();
-        for(int i=0;i<combination.length();i++) {
-            Color c = Color.getByStringCode(combination.substring(i, i+1)); 
+        for (int i = 0; i < combination.length(); i++) {
+            Color c = Color.getByStringCode(combination.substring(i, i + 1));
             colors.add(c);
-        } 
+        }
         return colors;
-    }  
+    }
 
 }

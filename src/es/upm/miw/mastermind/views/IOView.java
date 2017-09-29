@@ -1,17 +1,17 @@
 package es.upm.miw.mastermind.views;
 
-public abstract class IOView {
-    
-    public abstract String readString(String title);
+public interface IOView {
 
-    public abstract String readStringYesNo(String title);
+    public String readString(String title);
 
-    public abstract int readInt(String title);
+    public String readStringYesNo(String title);
 
-    public abstract void writeln();
+    public int readInt(String title);
 
-    public abstract void write(String title);
+    public void writeln();
 
-    public abstract void writeln(String title);
+    public void write(String title);
+
+    public void writeln(String title);
 
 }
