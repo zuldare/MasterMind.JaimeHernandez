@@ -4,19 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.upm.miw.mastermind.controllers.ColorCombinationGeneratorController;
-import es.upm.miw.mastermind.controllers.IOController;
-import es.upm.miw.mastermind.utils.Color; 
-import es.upm.miw.mastermind.utils.Message;
+import es.upm.miw.mastermind.utils.Color;  
 
 public class Board {
-    private Combination secretCombination; 
-    private IOController ioController;
-    private ColorCombinationGeneratorController colorCombinationGeneratorController;
+    
+    private Combination secretCombination;  
+    private ColorCombinationGeneratorController colorCombinationGeneratorController; 
+    private int[] killedInjured = new int[2];
 
-    public Board(IOController ioController, ColorCombinationGeneratorController colorCombinationGeneratorController){
-        assert ioController != null;
-        assert colorCombinationGeneratorController != null; 
-        this.ioController = ioController; 
+    public Board(ColorCombinationGeneratorController colorCombinationGeneratorController){ 
+        assert colorCombinationGeneratorController != null;  
         this.colorCombinationGeneratorController = colorCombinationGeneratorController;
         this.secretCombination = null;
     } 
@@ -27,14 +24,25 @@ public class Board {
     
     public Combination getSecretBoardCombination(){
         return this.secretCombination;
-    }
+    } 
     
     public boolean matchesWithSecretCombination(Combination combination){
         assert(combination != null);
         return secretCombination.equals(combination);
     } 
      
-    public void writeResultCombination(Combination combination) {
+    public int getKilled (Combination combination){
+        calculateResultCombination(combination);
+        return killedInjured[0];
+    }
+    
+    public int getInjured (Combination combination){
+        calculateResultCombination(combination);
+        return killedInjured[1];
+    } 
+    
+    
+    private void calculateResultCombination(Combination combination) {
         assert(combination != null); 
         
         int injured = 0;
@@ -53,22 +61,9 @@ public class Board {
                 colorAlreadyChecked.add(color);
             } 
         }
-        printResultMessage(killed, injured); 
-    }
-    
-    
-    
-    private void printResultMessage(int killed, int injured){ 
-        ioController.writeln(this.getKilledMessage(killed) + this.getInjuredMessage(injured)); 
+        this.killedInjured[0] = killed;
+        this.killedInjured[1] = injured; 
     } 
-    
-    private String getKilledMessage(int killed) {
-        return String.format(Message.DEAD.toString(), killed) ;
-    }
-    
-    private String getInjuredMessage(int injured) {
-        return String.format(Message.INJURED.toString(), injured) ;
-    }
     
     @Override
     public String toString() {

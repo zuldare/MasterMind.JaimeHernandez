@@ -38,6 +38,12 @@ public class Combination {
         return colors.contains(color);
     }
      
+    public boolean equals(Combination combination) {
+        for(int i=0;i<combination.dimension;i++){
+            if (!this.equalsColorAtPosition(combination.getColorAtPosition(i), i) ) return false; 
+        }
+        return true; 
+    }
     
     @Override
     public String toString() {
@@ -48,8 +54,5 @@ public class Combination {
         return result;
     }
     
-    @Override
-    public boolean equals(Object obj) {
-        return this.colors.equals(obj); 
-    }
+    
 }
